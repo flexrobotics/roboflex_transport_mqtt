@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.18)
 
-project(roboflex_transport_mqtt VERSION 0.1.3 DESCRIPTION "roboflex transport mqtt")
+project(roboflex_transport_mqtt)
 
 # specify the C++ standard
 set(CMAKE_CXX_STANDARD 20)

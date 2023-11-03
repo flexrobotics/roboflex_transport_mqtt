@@ -37,7 +37,7 @@ any node -> MQTTPublisher ==MQTT BROKER==> MQTTSubscriber -> any node
 
 ## Import
 
-    import roboflex.transport.mqtt as ftm
+    import roboflex.transport.mqtt as rtm
 
 # Classes
 
@@ -55,7 +55,7 @@ In order to use the other MQTT classes, you must instantiate an MQTTContext, and
 of both MQTTPublisher and MQTTSubscriber.
 
     # instantiate like so:
-    mqtt_context = ftm.MQTTContext()
+    mqtt_context = rtm.MQTTContext()
 
 ## MQTTNodeBase
 
@@ -85,8 +85,8 @@ _**(inherits MQTTNodeBase)**_
 
 Publishes any messages it receives to some topic, on some broker. When it receives an message, it publishes the binary representation on the given topic, and then propagages the message verbatim.
 
-    mqtt_publisher = ftm.MQTTPublisher(
-        mqtt_context: ftm.MQTTContext,
+    mqtt_publisher = rtm.MQTTPublisher(
+        mqtt_context: rtm.MQTTContext,
         broker_address: str,
         broker_port: int,
         keepalive_seconds: int,
@@ -117,8 +117,8 @@ _**(inherits MQTTNodeBase)**_
 
 Suscribes to some topic from some broker. Expects only Roboflex encoded messages.
 
-    mqtt_subscriber = ftm.MQTTSubscriber(
-        mqtt_context: ftm.MQTTContext,
+    mqtt_subscriber = rtm.MQTTSubscriber(
+        mqtt_context: rtm.MQTTContext,
         broker_address: str,
         broker_port: int,
         keepalive_seconds: int,
