@@ -50,7 +50,7 @@ long_description = (Path(__file__).parent / "README.md").read_text()
 
 setup(
     name='roboflex.transport.mqtt',
-    version='0.1.3',
+    version='0.1.4',
     description='Roboflex Transport mqtt Library',
     author='Colin Prepscius',
     author_email='colinprepscius@gmail.com',

@@ -82,12 +82,16 @@ set_property(TARGET roboflex_transport_mqtt PROPERTY
 target_include_directories(roboflex_transport_mqtt PUBLIC 
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include> 
     $<INSTALL_INTERFACE:include>
+    ${Mosquitto_INCLUDE_DIRS}
 )
 
 # Link against the necessary libraries
 target_link_libraries(roboflex_transport_mqtt PUBLIC 
     roboflex_core 
-    mosquitto
+    # mosquitto
+    # "libmosquitto"
+    #${mosquitto_LIBRARIES}
+    PkgConfig::Mosquitto
 
     # Unfortunately, we need to link against all these libraries
     # because they are used by roboflex_core, and cmake doesn't
@@ -105,7 +109,7 @@ target_link_libraries(roboflex_transport_mqtt PUBLIC
 
 # run_webcam_cpp example
 add_executable(pub_sub_0_cpp examples/pub_sub_0_cpp.cpp)
-target_link_libraries(pub_sub_0_cpp PRIVATE 
+target_link_libraries(pub_sub_0_cpp PUBLIC 
     roboflex_core 
     roboflex_transport_mqtt
 )

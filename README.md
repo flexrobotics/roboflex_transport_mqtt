@@ -24,6 +24,9 @@ any node -> MQTTPublisher ==MQTT BROKER==> MQTTSubscriber -> any node
     apt-get install mosquitto
     apt-get install libmosquitto-dev
 
+    ... or on mac ...
+    brew install mosquitto
+
 ## Build
 
     mkdir build && cd build
