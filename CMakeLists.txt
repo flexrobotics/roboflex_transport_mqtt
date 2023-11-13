@@ -108,8 +108,8 @@ target_link_libraries(roboflex_transport_mqtt PUBLIC
 # Examples
 
 # run_webcam_cpp example
-add_executable(pub_sub_0_cpp examples/pub_sub_0_cpp.cpp)
-target_link_libraries(pub_sub_0_cpp PUBLIC 
+add_executable(pub_sub_0_mqtt_cpp examples/pub_sub_0_cpp.cpp)
+target_link_libraries(pub_sub_0_mqtt_cpp PUBLIC 
     roboflex_core 
     roboflex_transport_mqtt
 )
