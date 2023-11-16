@@ -45,8 +45,8 @@ public:
 
     virtual ~MQTTNodeBase();
 
-    virtual void on_connect(struct mosquitto* m, int reason_code);
-    virtual void on_disconnect(struct mosquitto* m, int reason_code);
+    virtual void on_mqtt_connect(struct mosquitto* m, int reason_code);
+    virtual void on_mqtt_disconnect(struct mosquitto* m, int reason_code);
 
     bool is_connected() const { return connected; }
 
@@ -87,8 +87,8 @@ public:
     void publish(core::MessagePtr m) { this->signal_self(m); }
     bool get_retained() const { return retained; }
 
-    void on_connect(struct mosquitto* m, int reason_code) override;
-    void on_publish(struct mosquitto* m, int message_id);
+    void on_mqtt_connect(struct mosquitto* m, int reason_code) override;
+    void on_mqtt_publish(struct mosquitto* m, int reason_code);
 
 protected:
     bool retained;
@@ -114,9 +114,9 @@ public:
     bool is_subscribed() const { return subscribed; }
 
     // mqtt callbacks
-    void on_connect(struct mosquitto* m, int reason_code) override;
-    void on_subscribe(struct mosquitto *mosq, int mid, int qos_count, const int *granted_qos);
-    void on_receive(struct mosquitto *mosq, const struct mosquitto_message *msg);
+    void on_mqtt_connect(struct mosquitto* m, int reason_code) override;
+    void on_mqtt_subscribe(struct mosquitto *mosq, int mid, int qos_count, const int *granted_qos);
+    void on_mqtt_receive(struct mosquitto *mosq, const struct mosquitto_message *msg);
 
 
 protected:
