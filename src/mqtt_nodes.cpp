@@ -73,7 +73,7 @@ MQTTNodeBase::~MQTTNodeBase()
     }
 }
 
-void MQTTNodeBase::on_mqtt_disconnect(struct mosquitto* m, int reason_code)
+void MQTTNodeBase::on_mqtt_disconnect(struct mosquitto* /*m*/, int reason_code)
 {
     if (debug) {
         cout << "MQTTNodeBase on_disconnect: " << mosquitto_connack_string(reason_code) << std::endl;
@@ -82,7 +82,7 @@ void MQTTNodeBase::on_mqtt_disconnect(struct mosquitto* m, int reason_code)
     connected = false;
 }
 
-void MQTTNodeBase::on_mqtt_connect(struct mosquitto* m, int reason_code)
+void MQTTNodeBase::on_mqtt_connect(struct mosquitto* /*m*/, int /*reason_code*/)
 {
     // we're gonna need this callback...
 }
@@ -163,7 +163,7 @@ void MQTTPublisher::on_mqtt_connect(struct mosquitto* m, int reason_code)
     MQTTNodeBase::on_mqtt_connect(m, reason_code);
 }
 
-void MQTTPublisher::on_mqtt_publish(struct mosquitto* m, int message_id)
+void MQTTPublisher::on_mqtt_publish(struct mosquitto* /*m*/, int message_id)
 {
     if (debug) {
         cout << "MQTTPublisher on_mqtt_publish, message id = " << message_id << std::endl;
@@ -300,7 +300,7 @@ void MQTTSubscriber::on_mqtt_connect(struct mosquitto* m, int reason_code)
     MQTTNodeBase::on_mqtt_connect(m, reason_code);
 }
 
-void MQTTSubscriber::on_mqtt_subscribe(struct mosquitto *mosq, int mid, int qos_count, const int *granted_qos)
+void MQTTSubscriber::on_mqtt_subscribe(struct mosquitto */*mosq*/, int mid, int qos_count, const int *granted_qos)
 {
     if (debug) {
         cout << "MQTTSubscriber on_mqtt_subscribe mid:" << mid << " qos_count:" << qos_count << " granted_qos:" << *granted_qos << std::endl;
@@ -309,7 +309,7 @@ void MQTTSubscriber::on_mqtt_subscribe(struct mosquitto *mosq, int mid, int qos_
     subscribed = true;
 }
 
-void MQTTSubscriber::on_mqtt_receive(struct mosquitto *mosq, const struct mosquitto_message *msg)
+void MQTTSubscriber::on_mqtt_receive(struct mosquitto */*mosq*/, const struct mosquitto_message *msg)
 {
     // What a mosquitto_message looks like:
     // struct mosquitto_message{
