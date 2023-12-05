@@ -88,19 +88,7 @@ target_include_directories(roboflex_transport_mqtt PUBLIC
 # Link against the necessary libraries
 target_link_libraries(roboflex_transport_mqtt PUBLIC 
     roboflex_core 
-    # mosquitto
-    # "libmosquitto"
-    #${mosquitto_LIBRARIES}
     PkgConfig::Mosquitto
-
-    # Unfortunately, we need to link against all these libraries
-    # because they are used by roboflex_core, and cmake doesn't
-    # seem to be transitivily doing it's thing. Urgh, someone help.
-    flatbuffers_util 
-    xtensor 
-    xsimd 
-    xtl
-    Eigen3::Eigen
 )
 
 
